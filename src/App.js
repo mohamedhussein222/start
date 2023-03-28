@@ -7,35 +7,36 @@ import Conatct from "./Components/Navbar/Contact/Conatct";
 import Footer from "./Components/Navbar/Footer/Footer";
 import Copy from "./Components/Navbar/Copy/Copy";
 import Modal from "./Components/Navbar/Modal/Modal";
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import Layout from './Components/Navbar/Layout/Layout';
 import NotFond from "./Components/Navbar/NotFound/NotFond";
-import { createBrowserRouter, RouterProvider} from 'react-router-dom' 
+  const router =createBrowserRouter([
+  {path: '' , element : <Layout/>,children:[
+   {path : 'home' , element:<Home/>},
+   {path : 'about',element : <About/>},
+   {path : 'portfolio' , element :<Portfolio/>},
+   {path : 'footer' , element : <Footer/>},
+   {path : 'copy' , element: <Copy/>},
+   {path : 'contact' , element : <Conatct/>},
+   {path: '*' , element : <NotFond/>}
+   
 
- const router =  createBrowserRouter([
-  {path:'home', element:<Home/> },
-  {path : 'portfolio' , element : <Portfolio/> },
-  {path : 'about' , element:<About/>},
-  {path : 'footer' , element:<Footer/>},
-  {path : 'contact' , element:<Conatct/>},
-  {path : 'navbar' , element: <Navbar/>},
-  
 
 
-])
+  ]}
+ 
+
+
+  ])
+
+
+
  export default class App extends Component{
   state={};
   render(){
    return <>
-<Navbar/>
-<Home/>
-<Portfolio/>
-<Modal/>
-<About/>
-<Conatct/>
-<Footer/>
-<Copy/>
-
+   <RouterProvider router={router}/>
  
-  
 
    </>
   }
